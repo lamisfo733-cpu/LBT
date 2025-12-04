@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدي الروبوت - مراحل تفاعلية</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 تحدي الروبوت - المراحل التفاعلية</h1>
+            <div id="progress-bar">
+                <div class="stage active" id="stage1-indicator">المرحلة 1</div>
+                <div class="stage" id="stage2-indicator">المرحلة 2</div>
+                <div class="stage" id="stage3-indicator">المرحلة 3</div>
+            </div>
+        </header>
+
+        <main id="game-container">
+            <!-- المرحلة الأولى: الألغاز -->
+            <div id="stage1" class="game-stage active">
+                <h2>🧩 المرحلة الأولى: ألغاز الكلمات السرية</h2>
+                <div class="puzzle-container">
+                    <div class="puzzle" id="puzzle1">
+                        <h3>اللغز الأول:</h3>
+                        <p>أنا أتحرك بدون أقدام، وأطير بدون أجنحة، وأبكي بدون عيون. من أنا؟</p>
+                        <input type="text" class="puzzle-input" id="answer1" placeholder="أدخل الإجابة">
+                        <button onclick="checkPuzzle(1)">تحقق</button>
+                        <div class="hint">💡 تلميح: تجده في السماء</div>
+                    </div>
+
+                    <div class="puzzle" id="puzzle2" style="display:none;">
+                        <h3>اللغز الثاني:</h3>
+                        <p>لدي مفاتيح لكن لا أفتح أقفال، لدي مسافة لكن لا حدود لي، يمكنك الدخول لكن لا يمكنك الخروج. ما أنا؟</p>
+                        <input type="text" class="puzzle-input" id="answer2" placeholder="أدخل الإجابة">
+                        <button onclick="checkPuzzle(2)">تحقق</button>
+                        <div class="hint">💡 تلميح: تستخدمه كل يوم للكتابة</div>
+                    </div>
+
+                    <div class="puzzle" id="puzzle3" style="display:none;">
+                        <h3>اللغز الثالث:</h3>
+                        <p>في البرمجة: أنا أكرر نفسي مرارًا وتكرارًا، وأستمر حتى تخبرني أن أتوقف. ما اسمي؟</p>
+                        <input type="text" class="puzzle-input" id="answer3" placeholder="أدخل الإجابة بالإنجليزية">
+                        <button onclick="checkPuzzle(3)">تحقق</button>
+                        <div class="hint">💡 تلميح: for أو while</div>
+                    </div>
+
+                    <div id="stage1-complete" style="display:none;">
+                        <h3>✅ ممتاز! لقد أكملت المرحلة الأولى</h3>
+                        <p>الكلمة السرية: <span class="secret-word" id="secret1"></span></p>
+                        <button onclick="goToStage(2)" class="next-btn">انتقل للمرحلة الثانية</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المرحلة الثانية: لعبة المنصات -->
+            <div id="stage2" class="game-stage">
+                <h2>🎮 المرحلة الثانية: مغامرة الروبوت</h2>
+                <div class="code-challenge">
+                    <h3>🔧 التحدي البرمجي:</h3>
+                    <p>أكمل الكود الناقص لتفعيل قفزة الروبوت:</p>
+                    <div class="code-editor">
+                        <pre>function robotJump() {
+    robot.velocityY = <input type="text" id="code-input1" class="code-input" placeholder="؟" size="5">; // السرعة العمودية
+    if (robot.y > groundLevel) {
+        robot.y <input type="text" id="code-input2" class="code-input" placeholder="؟" size="3">= gravity; // تطبيق الجاذبية
+    }
+}</pre>
+                    </div>
+                    <button onclick="checkCode()" class="check-code-btn">تحقق من الكود</button>
+                    <div id="code-feedback"></div>
+                </div>
+
+                <div id="game-canvas-container" style="display:none;">
+                    <canvas id="gameCanvas" width="800" height="400"></canvas>
+                    <div class="game-controls">
+                        <p>استخدم مفتاح المسافة للقفز ⬆️ | الأسهم للحركة ⬅️➡️</p>
+                        <p>النقاط: <span id="score">0</span> | الكلمات المجمعة: <span id="collected">0</span>/3</p>
+                    </div>
+                </div>
+
+                <div id="stage2-complete" style="display:none;">
+                    <h3>✅ رائع! لقد أكملت المرحلة الثانية</h3>
+                    <p>الكلمة السرية: <span class="secret-word" id="secret2"></span></p>
+                    <button onclick="goToStage(3)" class="next-btn">انتقل للمرحلة الثالثة</button>
+                </div>
+            </div>
+
+            <!-- المرحلة الثالثة: المختبر الكيميائي -->
+            <div id="stage3" class="game-stage">
+                <h2>🧪 المرحلة الثالثة: مختبر الكيمياء</h2>
+                <div class="lab-container">
+                    <div class="lab-instructions">
+                        <h3>التجربة: تفاعل التعادل</h3>
+                        <p>اخلط المحاليل بالترتيب الصحيح لإكمال التفاعل!</p>
+                        <div class="equation">
+                            <p>المعادلة: HCl + NaOH → NaCl + H₂O</p>
+                        </div>
+                    </div>
+
+                    <div class="lab-workspace">
+                        <div class="chemicals-shelf">
+                            <h4>المحاليل المتاحة:</h4>
+                            <div class="chemical-bottles">
+                                <div class="bottle" onclick="addChemical('HCl')" style="background: linear-gradient(180deg, transparent 60%, #ff6b6b 60%);">
+                                    <span>HCl</span>
+                                    <small>حمض</small>
+                                </div>
+                                <div class="bottle" onclick="addChemical('NaOH')" style="background: linear-gradient(180deg, transparent 60%, #4ecdc4 60%);">
+                                    <span>NaOH</span>
+                                    <small>قاعدة</small>
+                                </div>
+                                <div class="bottle" onclick="addChemical('H2O')" style="background: linear-gradient(180deg, transparent 60%, #95e1ff 60%);">
+                                    <span>H₂O</span>
+                                    <small>ماء</small>
+                                </div>
+                                <div class="bottle" onclick="addChemical('H2SO4')" style="background: linear-gradient(180deg, transparent 60%, #ffd93d 60%);">
+                                    <span>H₂SO₄</span>
+                                    <small>حمض قوي</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mixing-area">
+                            <h4>منطقة الخلط:</h4>
+                            <div id="beaker" class="beaker">
+                                <div id="solution" class="solution"></div>
+                                <p class="beaker-label">دورق القياس</p>
+                            </div>
+                            <div class="mix-sequence">
+                                <p>ترتيب الإضافة:</p>
+                                <div id="sequence-display">اضغط على المحاليل للإضافة</div>
+                            </div>
+                            <button onclick="testReaction()" class="test-btn">اختبر التفاعل</button>
+                            <button onclick="resetLab()" class="reset-btn">إعادة تعيين</button>
+                        </div>
+
+                        <div class="ph-meter">
+                            <h4>مقياس pH</h4>
+                            <div class="ph-display">
+                                <div id="ph-value">7.0</div>
+                                <div class="ph-scale">
+                                    <div class="ph-indicator" id="ph-indicator"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="stage3-complete" style="display:none;">
+                        <h3>🎉 تهانينا! لقد أكملت جميع المراحل</h3>
+                        <p>الكلمة السرية النهائية: <span class="secret-word" id="secret3"></span></p>
+                        <div class="final-secrets">
+                            <h4>جميع الكلمات السرية:</h4>
+                            <ol>
+                                <li><span id="final-secret1"></span></li>
+                                <li><span id="final-secret2"></span></li>
+                                <li><span id="final-secret3"></span></li>
+                            </ol>
+                        </div>
+                        <button onclick="restartGame()" class="restart-btn">ابدأ من جديد</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

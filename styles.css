@@ -1,0 +1,756 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    text-align: center;
+    color: #667eea;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.stage {
+    padding: 10px 30px;
+    background: #e0e0e0;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.stage.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.1);
+}
+
+.stage.completed {
+    background: #4caf50;
+    color: white;
+}
+
+.game-stage {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s;
+}
+
+.game-stage.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.game-stage h2 {
+    color: #667eea;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+/* المرحلة الأولى: الألغاز */
+.puzzle-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.puzzle {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border-right: 5px solid #667eea;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.puzzle h3 {
+    color: #764ba2;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.puzzle p {
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.puzzle-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.puzzle-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+
+.puzzle button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.puzzle button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.hint {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff3cd;
+    border-radius: 8px;
+    color: #856404;
+    font-style: italic;
+    border-right: 3px solid #ffc107;
+}
+
+#stage1-complete {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #4caf50;
+}
+
+#stage1-complete h3 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.secret-word {
+    display: inline-block;
+    font-weight: bold;
+    color: #2e7d32;
+    font-size: 1.5em;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #4caf50;
+    margin: 10px 0;
+}
+
+.next-btn {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* المرحلة الثانية: لعبة المنصات */
+.code-challenge {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.code-challenge h3 {
+    color: #764ba2;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.code-challenge > p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.code-editor {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 25px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+    margin: 20px 0;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-size: 1.1em;
+}
+
+.code-editor pre {
+    margin: 0;
+    line-height: 2;
+}
+
+.code-input {
+    background: #2d2d2d;
+    color: #4ec9b0;
+    border: 2px solid #569cd6;
+    padding: 5px 10px;
+    width: 70px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.code-input:focus {
+    outline: none;
+    border-color: #4ec9b0;
+}
+
+.check-code-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.check-code-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+}
+
+#code-feedback {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#code-feedback.correct {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 2px solid #4caf50;
+}
+
+#code-feedback.incorrect {
+    background: #ffebee;
+    color: #c62828;
+    border: 2px solid #f44336;
+}
+
+#game-canvas-container {
+    margin-top: 30px;
+}
+
+#gameCanvas {
+    display: block;
+    margin: 20px auto;
+    background: #87ceeb;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 4px solid #333;
+}
+
+.game-controls {
+    text-align: center;
+    margin-top: 20px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.game-controls p {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+#score, #collected {
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+#stage2-complete {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 3px solid #4caf50;
+    margin-top: 30px;
+}
+
+#stage2-complete h3 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* المرحلة الثالثة: المختبر */
+.lab-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.lab-instructions {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 3px solid #2196f3;
+}
+
+.lab-instructions h3 {
+    color: #1565c0;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.lab-instructions > p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.equation {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #1565c0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lab-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 250px;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.chemicals-shelf {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chemicals-shelf h4 {
+    color: #764ba2;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.chemical-bottles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.bottle {
+    width: 100%;
+    height: 140px;
+    border: 3px solid #333;
+    border-radius: 10px 10px 50px 50px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bottle:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bottle span {
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #333;
+    z-index: 1;
+}
+
+.bottle small {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 5px;
+    z-index: 1;
+}
+
+.mixing-area {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mixing-area h4 {
+    color: #764ba2;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.beaker {
+    width: 180px;
+    height: 250px;
+    margin: 20px auto;
+    border: 5px solid #333;
+    border-radius: 0 0 30px 30px;
+    border-top: none;
+    position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.solution {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0%;
+    transition: all 0.5s ease;
+    background: transparent;
+}
+
+.beaker::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    height: 5px;
+    background: #333;
+}
+
+.beaker-label {
+    position: absolute;
+    bottom: -35px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    font-size: 0.9em;
+}
+
+.mix-sequence {
+    margin: 25px 0;
+}
+
+.mix-sequence > p {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+#sequence-display {
+    min-height: 50px;
+    background: white;
+    border: 3px dashed #bbb;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.95em;
+    color: #888;
+}
+
+.sequence-item {
+    padding: 8px 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.test-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.test-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #f44336 0%, #e53935 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(244, 67, 54, 0.4);
+}
+
+.ph-meter {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ph-meter h4 {
+    color: #764ba2;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.ph-display {
+    text-align: center;
+}
+
+#ph-value {
+    font-size: 3em;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ph-scale {
+    height: 220px;
+    background: linear-gradient(180deg, 
+        #d32f2f 0%, 
+        #f44336 10%,
+        #ff9800 25%, 
+        #ffc107 35%,
+        #4caf50 50%, 
+        #2196f3 65%, 
+        #3f51b5 80%,
+        #673ab7 100%);
+    border-radius: 15px;
+    position: relative;
+    border: 3px solid #333;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.ph-indicator {
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    height: 6px;
+    background: #333;
+    top: 50%;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: top 0.5s ease;
+}
+
+#stage3-complete {
+    background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 4px solid #ffc107;
+    box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+    margin-top: 30px;
+}
+
+#stage3-complete h3 {
+    color: #f57f17;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.final-secrets {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.final-secrets h4 {
+    color: #764ba2;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.final-secrets ol {
+    text-align: right;
+    padding-right: 40px;
+}
+
+.final-secrets li {
+    margin: 15px 0;
+    font-size: 1.3em;
+    color: #333;
+}
+
+.final-secrets li span {
+    color: #4caf50;
+    font-weight: bold;
+    background: #e8f5e9;
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+
+.restart-btn {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.restart-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .lab-workspace {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    .game-stage {
+        padding: 20px;
+    }
+    
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+
+    #progress-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .stage {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse {
+    animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.bounce {
+    animation: bounce 0.6s ease-in-out;
+}
