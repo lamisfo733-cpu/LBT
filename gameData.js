@@ -10,7 +10,7 @@ const stages = [
         id: 1,
         title: "تاريخ بلاكرس",
         icon: "🏆",
-        unlockDate: new Date('2024-12-01T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "اكتشف تاريخ فريق بلاكرس وإنجازاته المميزة",
         challenges: [
             {
@@ -42,7 +42,7 @@ const stages = [
         id: 2,
         title: "أساسيات FTC",
         icon: "🤖",
-        unlockDate: new Date('2024-12-08T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "تعرف على FIRST Tech Challenge والروبوتات",
         challenges: [
             {
@@ -91,7 +91,7 @@ const stages = [
         id: 3,
         title: "جائزة الإلهام",
         icon: "🌟",
-        unlockDate: new Date('2024-12-15T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "تعرف على أعظم جائزة في FTC وكيف فاز بها بلاكرس",
         challenges: [
             {
@@ -132,7 +132,7 @@ const stages = [
         id: 4,
         title: "التكنولوجيا والابتكار",
         icon: "💡",
-        unlockDate: new Date('2024-12-22T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "استكشف مجالات STEM والابتكار التكنولوجي",
         challenges: [
             {
@@ -173,7 +173,7 @@ const stages = [
         id: 5,
         title: "First Global Challenge",
         icon: "🌍",
-        unlockDate: new Date('2024-12-29T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "رحلة بلاكرس في الأولمبياد العالمي للروبوتات",
         challenges: [
             {
@@ -216,7 +216,7 @@ const stages = [
         id: 6,
         title: "المجتمع والتأثير",
         icon: "💚",
-        unlockDate: new Date('2025-01-05T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "دور بلاكرس في نشر ثقافة STEM في ليبيا",
         challenges: [
             {
@@ -259,7 +259,7 @@ const stages = [
         id: 7,
         title: "التحدي النهائي",
         icon: "🎯",
-        unlockDate: new Date('2025-01-12T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "اختبار شامل لكل ما تعلمته عن بلاكرس وFTC",
         challenges: [
             {
@@ -328,7 +328,7 @@ const stages = [
         id: 8,
         title: "Code Debugger",
         icon: "🐛",
-        unlockDate: new Date('2025-12-1T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "أصلح الأخطاء البرمجية ثم العب لعبة المنصات!",
         type: "special",
         specialType: "codeDebugger",
@@ -338,7 +338,7 @@ const stages = [
         id: 9,
         title: "مختبر بلاكرس",
         icon: "🔬",
-        unlockDate: new Date('2025-12-1T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "امزج المواد الكيميائية لإنتاج التفاعل الصحيح!",
         type: "special",
         specialType: "chemicalLab",
@@ -348,7 +348,7 @@ const stages = [
         id: 10,
         title: "مهندس الدوائر",
         icon: "⚡",
-        unlockDate: new Date('2025-12-1T00:00:00'),
+        unlockDate: new Date('2025-12-01T00:00:00'),
         description: "صمم دائرة كهربائية لتشغيل محرك الروبوت!",
         type: "special",
         specialType: "circuitBuilder",
