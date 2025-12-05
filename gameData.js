@@ -1,6 +1,6 @@
 // Game Data - Stages Configuration (UPDATED WITH 3 NEW STAGES)
-const GAME_START_DATE = new Date('2024-12-01T00:00:00');
-const GAME_END_DATE = new Date('2025-01-22T23:59:59');
+const GAME_START_DATE = new Date('2025-12-01T00:00:00');
+const GAME_END_DATE = new Date('2026-01-22T23:59:59');
 
 // Admin Email (change this to your email)
 const ADMIN_EMAIL = 'lamisfo733@gmail.com';
