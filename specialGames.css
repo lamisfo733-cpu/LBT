@@ -1,0 +1,682 @@
+/* Special Games CSS - Interactive Stages 8, 9, 10 */
+
+/* ========== STAGE 8: Code Debugger & Platform Game ========== */
+
+.code-debugger {
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--primary-green);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.code-editor-container {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.code-editor {
+    width: 100%;
+    min-height: 300px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--primary-green);
+    resize: vertical;
+    line-height: 1.6;
+    tab-size: 4;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.code-editor:focus {
+    outline: none;
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.3);
+}
+
+.code-controls {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.btn-code {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-run {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+}
+
+.btn-hint {
+    background: linear-gradient(135deg, var(--accent-yellow), #e67e22);
+    color: white;
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.code-output {
+    background: #1e1e1e;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+    min-height: 80px;
+    font-family: 'Courier New', monospace;
+    color: var(--text-gray);
+}
+
+.output-error {
+    color: var(--danger-red);
+}
+
+.output-success {
+    color: var(--primary-green);
+}
+
+/* Platform Game Canvas */
+.platform-game-container {
+    display: none;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.platform-game-container.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+#platformCanvas {
+    border: 3px solid var(--primary-green);
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 70%, #8B7355 70%, #8B7355 100%);
+    display: block;
+    margin: 1rem auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    image-rendering: pixelated;
+}
+
+.game-controls {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.game-controls h4 {
+    color: var(--accent-yellow);
+    margin-bottom: 1rem;
+}
+
+.control-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-control {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--primary-green);
+    border-radius: 10px;
+    background: rgba(46, 204, 113, 0.2);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.btn-control:active {
+    transform: scale(0.9);
+    background: rgba(46, 204, 113, 0.4);
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-yellow);
+}
+
+/* ========== STAGE 9: Chemical Lab ========== */
+
+.chemical-lab {
+    background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(52, 152, 219, 0.1));
+    border: 2px solid var(--primary-green);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.lab-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.chemicals-panel {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.chemicals-panel h3 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+.chemicals-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.chemical-bottle {
+    position: relative;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.chemical-bottle:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-green);
+    box-shadow: 0 5px 20px rgba(46, 204, 113, 0.3);
+}
+
+.chemical-bottle.selected {
+    border-color: var(--accent-yellow);
+    background: rgba(243, 156, 18, 0.2);
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+}
+
+.chemical-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.chemical-name {
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+}
+
+.chemical-formula {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    font-family: 'Courier New', monospace;
+}
+
+.mixing-area {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.beaker-container {
+    position: relative;
+    width: 200px;
+    height: 250px;
+    margin: 2rem auto;
+}
+
+.beaker {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        transparent 20%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+}
+
+.beaker::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10px;
+    right: -10px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px 5px 0 0;
+}
+
+.beaker-liquid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0%;
+    background: linear-gradient(to top, rgba(46, 204, 113, 0.6), rgba(46, 204, 113, 0.3));
+    border-radius: 0 0 16px 16px;
+    transition: all 0.5s ease;
+}
+
+.beaker-bubbles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+}
+
+.bubble {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: bubble-rise 3s infinite;
+}
+
+@keyframes bubble-rise {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) scale(1);
+        opacity: 0;
+    }
+}
+
+.mixture-list {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    min-height: 80px;
+}
+
+.mixture-list h4 {
+    color: var(--accent-yellow);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.mixture-item {
+    display: inline-block;
+    margin: 0.3rem;
+    padding: 0.5rem 1rem;
+    background: rgba(46, 204, 113, 0.2);
+    border: 1px solid var(--primary-green);
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.lab-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.btn-lab {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-mix {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+}
+
+.btn-clear {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.lab-result {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    display: none;
+}
+
+.lab-result.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.lab-result.success {
+    background: rgba(46, 204, 113, 0.2);
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.lab-result.error {
+    background: rgba(231, 76, 60, 0.2);
+    border: 2px solid var(--danger-red);
+    color: var(--danger-red);
+}
+
+/* ========== STAGE 10: Circuit Builder ========== */
+
+.circuit-builder {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+    border: 2px solid var(--primary-green);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.circuit-workspace {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.components-panel {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+.components-panel h3 {
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.component-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: grab;
+    transition: all 0.3s ease;
+}
+
+.component-item:hover {
+    border-color: var(--primary-green);
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.component-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.component-icon {
+    font-size: 2rem;
+}
+
+.component-info {
+    flex: 1;
+}
+
+.component-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.component-desc {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+}
+
+.circuit-canvas-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 1rem;
+    min-height: 400px;
+    position: relative;
+}
+
+#circuitCanvas {
+    width: 100%;
+    height: 500px;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            transparent 1px,
+            transparent 20px,
+            rgba(255, 255, 255, 0.03) 21px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.03) 0px,
+            transparent 1px,
+            transparent 20px,
+            rgba(255, 255, 255, 0.03) 21px
+        );
+    border: 2px solid var(--primary-green);
+    border-radius: 8px;
+    position: relative;
+}
+
+.placed-component {
+    position: absolute;
+    padding: 0.8rem;
+    background: rgba(46, 204, 113, 0.2);
+    border: 2px solid var(--primary-green);
+    border-radius: 8px;
+    cursor: move;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+    transition: all 0.2s ease;
+}
+
+.placed-component:hover {
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+    z-index: 10;
+}
+
+.placed-component.selected {
+    border-color: var(--accent-yellow);
+    box-shadow: 0 0 30px rgba(243, 156, 18, 0.5);
+}
+
+.component-delete {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 25px;
+    height: 25px;
+    background: var(--danger-red);
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.placed-component:hover .component-delete {
+    display: flex;
+}
+
+.circuit-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-circuit {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-test {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: white;
+}
+
+.btn-clear-circuit {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.btn-hint-circuit {
+    background: linear-gradient(135deg, var(--accent-yellow), #e67e22);
+    color: white;
+}
+
+.circuit-result {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: none;
+}
+
+.circuit-result.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.circuit-result.success {
+    background: rgba(46, 204, 113, 0.2);
+    border: 2px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.circuit-result.error {
+    background: rgba(231, 76, 60, 0.2);
+    border: 2px solid var(--danger-red);
+    color: var(--danger-red);
+}
+
+.circuit-simulation {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+}
+
+.circuit-simulation.show {
+    display: block;
+}
+
+.simulation-output {
+    font-family: 'Courier New', monospace;
+    color: var(--primary-green);
+    line-height: 1.8;
+}
+
+/* Responsive Design for Special Games */
+@media (max-width: 968px) {
+    .lab-workspace,
+    .circuit-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .chemicals-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #platformCanvas {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .code-controls {
+        flex-direction: column;
+    }
+
+    .btn-code {
+        width: 100%;
+    }
+
+    .chemicals-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .game-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Loading Animation */
+.loading-game {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-gray);
+}
+
+.loading-game::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
